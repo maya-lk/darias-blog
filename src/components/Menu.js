@@ -32,9 +32,6 @@ class Menu extends Component {
     
         return (
             <div id="flyoutMenu" className={visibility}>
-                {
-                    console.log(this.state.mainMenuItems)
-                }
                 <div className="topBarWrap d-flex justify-content-end">
                     <ReactBootstrap.Button className="menuToggler closeMenu" onMouseDown={this.props.handleMouseDown}>
                         <span className="closeBtn"></span>
@@ -49,21 +46,12 @@ class Menu extends Component {
                         <span className="menuBg"></span>
                         <Nav defaultActiveKey="/" className="flex-column" id="mainMenu">
                             {
-                                // Object.keys(this.state.mainMenuItems).map(function(key , index) {
-                                //     return(
-                                //         <Nav.Link key={index} as={Link} to="/" href="/">{console.log(this.state.mainMenuItems[key])}</Nav.Link>
-                                //     )
-                                // })
-                                // this.state.mainMenuItems.map(function(menuItem , index) {
-                                //     return(
-                                //         <Nav.Link key={index} as={Link} to="/" href="/">{console.log(menuItem)}</Nav.Link>
-                                //     )
-                                // })
+                                Object.values(this.state.mainMenuItems).map(function(menuItem , index) {
+                                    return(
+                                        <Nav.Link key={index} as={Link} to="/" href="/">{menuItem.title}</Nav.Link>
+                                    )
+                                })
                             }
-                            <Nav.Link as={Link} to="/" href="/">Home</Nav.Link>
-                            {/* <Nav.Link as={Link} to="/" href="/">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/">Link</Nav.Link>
-                            <Nav.Link as={Link} to="/">Link</Nav.Link> */}
                         </Nav>
                     </div>
                 </div>
