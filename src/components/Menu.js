@@ -11,6 +11,17 @@ class Menu extends Component {
         this.state = {
             mainMenuItems:''
         }
+
+        this.hoverOn = this.hoverOn.bind(this);
+        this.hoverOff = this.hoverOff.bind(this);
+    }
+
+    hoverOn() {
+        console.log('Mouse Enter');
+    }
+
+    hoverOff() {
+        console.log('Mouse Leave');
     }
 
     componentDidMount(){
@@ -20,8 +31,6 @@ class Menu extends Component {
         }))
         .catch(error => console.log(error))
     }
-
-    
 
     render() {
         var visibility = "hide";
@@ -47,10 +56,19 @@ class Menu extends Component {
                         <Nav defaultActiveKey="/" className="flex-column" id="mainMenu">
                             {
                                 Object.values(this.state.mainMenuItems).map(function(menuItem , index) {
+                                    var menuName = menuItem.title;
+                                    var menuslug = '/';
+                                    if (menuName === 'Home') {
+                                        menuslug = '/';
+                                    } else {
+                                        menuslug = '/'+menuName.toLowerCase().replace(" ", "-");
+                                    }
+                                    console.log(this)
                                     return(
-                                        <Nav.Link key={index} as={Link} to="/" href="/">{menuItem.title}</Nav.Link>
+                                        // <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onMouseOver={this.hoverOn()}>{menuName}</Nav.Link>
+                                        <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} ></Nav.Link>
                                     )
-                                })
+                                },this)
                             }
                         </Nav>
                     </div>

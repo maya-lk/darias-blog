@@ -14,12 +14,11 @@ export default class Header extends React.Component{
 
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.toggleMenu = this.toggleMenu.bind(this);
+        
     }
 
     handleMouseDown(e) {
         this.toggleMenu();
-        
-        console.log("clicked");
         e.stopPropagation();
     }
      
@@ -30,7 +29,6 @@ export default class Header extends React.Component{
             }
         );
     }
-    
 
     componentDidMount(){
         axios.get('https://mayaprojects.net/darias/blog/wp/wp-json/daria/v2/settings')
