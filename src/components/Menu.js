@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as ReactBootstrap from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import API from '../lib/api';
  
 class Menu extends Component {
 
@@ -14,10 +14,20 @@ class Menu extends Component {
 
         this.hoverOn = this.hoverOn.bind(this);
         this.hoverOff = this.hoverOff.bind(this);
+        this.menuclickFunc = this.menuclickFunc.bind(this);
+        this.visibility = "hide";
+    }
+    
+    menuclickFunc(){
+        this.props.togglemenuFunc();
     }
 
-    hoverOn() {
-        console.log('Mouse Enter');
+    hoverOn(e) {
+        console.log('Mouse Enter' , e.target);
+        var hoverImg = e.target.getAttribute('data-hover');
+        console.log('hoverImg' , hoverImg);
+
+        document.getElementById('menuBg').style.backgroundImage = 'url('+hoverImg+')';
     }
 
     hoverOff() {
@@ -25,7 +35,7 @@ class Menu extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://mayaprojects.net/darias/blog/wp/wp-json/menus/v1/menus/main-menu')
+        API.get('menus/v1/menus/main-menu')
         .then(data => this.setState({
             mainMenuItems : data.data.items
         }))
@@ -33,14 +43,15 @@ class Menu extends Component {
     }
 
     render() {
-        var visibility = "hide";
-    
+        
         if (this.props.menuVisibility) {
-            visibility = "show";
+            this.visibility = "show";
+        }else{
+            this.visibility = "hide";
         }
     
         return (
-            <div id="flyoutMenu" className={visibility}>
+            <div id="flyoutMenu" className={this.visibility}>
                 <div className="topBarWrap d-flex justify-content-end">
                     <ReactBootstrap.Button className="menuToggler closeMenu" onMouseDown={this.props.handleMouseDown}>
                         <span className="closeBtn"></span>
@@ -52,8 +63,8 @@ class Menu extends Component {
 
                     </div>
                     <div className="menuItemsWrap">
-                        <span className="menuBg"></span>
-                        <Nav defaultActiveKey="/" className="flex-column" id="mainMenu">
+                        <span className="menuBg" id="menuBg"></span>
+                        <Nav defaultActiveKey="/" className="flex-column" id="mainMenu">                            
                             {
                                 Object.values(this.state.mainMenuItems).map(function(menuItem , index) {
                                     var menuName = menuItem.title;
@@ -61,14 +72,15 @@ class Menu extends Component {
                                     if (menuName === 'Home') {
                                         menuslug = '/';
                                     } else {
-                                        menuslug = '/'+menuName.toLowerCase().replace(" ", "-");
+                                        menuslug = '/'+menuName.toLowerCase().replace(/ /g, "-");
                                     }
-                                    console.log(this)
                                     return(
                                         // <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onMouseOver={this.hoverOn()}>{menuName}</Nav.Link>
-                                        <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} ></Nav.Link>
+                                        <Nav.Link activeClassname="active" key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onClick={this.menuclickFunc} onMouseOver={this.hoverOn}>                                            
+                                            {menuName}
+                                        </Nav.Link>
                                     )
-                                },this)
+                                }.bind(this))
                             }
                         </Nav>
                     </div>

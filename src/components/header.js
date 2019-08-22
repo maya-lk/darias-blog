@@ -1,8 +1,8 @@
 import React from 'react'
 import { Navbar } from 'react-bootstrap'
-import axios from 'axios'
 import MenuButton from './MenuButton'
 import Menu from './Menu'
+import API from '../lib/api';
 
 export default class Header extends React.Component{
     constructor(props, context){
@@ -19,7 +19,7 @@ export default class Header extends React.Component{
 
     handleMouseDown(e) {
         this.toggleMenu();
-        e.stopPropagation();
+        //e.stopPropagation();
     }
      
     toggleMenu() {
@@ -31,7 +31,7 @@ export default class Header extends React.Component{
     }
 
     componentDidMount(){
-        axios.get('https://mayaprojects.net/darias/blog/wp/wp-json/daria/v2/settings')
+        API.get('daria/v2/settings')
         .then(data => this.setState({
             settings : [
                 {
@@ -44,8 +44,8 @@ export default class Header extends React.Component{
 
     render() {
         return (
-            <header className="header">
-                <Menu handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible}/>
+            <header className="header">               
+                <Menu handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible} togglemenuFunc={this.toggleMenu}/>
                 <Navbar className="mainNavbar justify-content-between">
                     <Navbar.Brand href="/">
                         {
@@ -62,15 +62,3 @@ export default class Header extends React.Component{
         )
     }
 }
-
-
-// export default (props) => (
-//     <header className="header">
-//         <Navbar className="mainNavbar justify-content-between">
-//             <Navbar.Brand href="/">
-//                 <img src={props.url} alt={props.alt} />
-//             </Navbar.Brand>
-//             <Button className="menuToggler">Menu</Button>
-//         </Navbar>
-//     </header>
-// );

@@ -3,8 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter , faFacebookF , faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import Creator from '../images/maya.png';
+import API from '../lib/api';
 
 const twitter = <FontAwesomeIcon icon={faTwitter} />
 const facebook = <FontAwesomeIcon icon={faFacebookF} />
@@ -20,7 +20,7 @@ export default class Footer extends React.Component{
     
 
     componentDidMount(){
-        axios.get('https://mayaprojects.net/darias/blog/wp/wp-json/daria/v2/settings')
+        API.get('daria/v2/settings')
         .then(data => this.setState({
             settings : [
                 {

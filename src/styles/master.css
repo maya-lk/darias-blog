@@ -122,6 +122,7 @@ body{
     -moz-transition: transform 0.8s cubic-bezier(0, .52, 0, 1);
     -ms-transition: transform 0.8s cubic-bezier(0, .52, 0, 1);
     -o-transition: transform 0.8s cubic-bezier(0, .52, 0, 1);
+    transform: translate3d(-100vw, 0, 0);
 }
 .topBarWrap {
     background-color: #fff;
