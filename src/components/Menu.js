@@ -9,7 +9,9 @@ class Menu extends Component {
     constructor(){
         super()
         this.state = {
-            mainMenuItems:''
+            mainMenuItems:'',
+            hovered: false,
+            defaultMenuImage : ''
         }
 
         this.hoverOn = this.hoverOn.bind(this);
@@ -23,21 +25,31 @@ class Menu extends Component {
     }
 
     hoverOn(e) {
-        console.log('Mouse Enter' , e.target);
         var hoverImg = e.target.getAttribute('data-hover');
-        console.log('hoverImg' , hoverImg);
-
         document.getElementById('menuBg').style.backgroundImage = 'url('+hoverImg+')';
+        // document.getElementById('menuBg').classList.add('show');
+        this.setState({hovered: true});
     }
 
-    hoverOff() {
-        console.log('Mouse Leave');
+    hoverOff(e) {
+        document.getElementById('menuBg').style.backgroundImage = 'url('+this.state.defaultMenuImage+')';
+        //this.setState({hovered: false});
+    }
+
+    changeBg(element , imageUrl) {
+        element.classList.add('show');
     }
 
     componentDidMount(){
         API.get('menus/v1/menus/main-menu')
         .then(data => this.setState({
             mainMenuItems : data.data.items
+        }))
+        .catch(error => console.log(error))
+
+        API.get('daria/v2/settings')
+        .then(data => this.setState({
+            defaultMenuImage : data.data.default_menu_image
         }))
         .catch(error => console.log(error))
     }
@@ -63,7 +75,10 @@ class Menu extends Component {
 
                     </div>
                     <div className="menuItemsWrap">
-                        <span className="menuBg" id="menuBg"></span>
+                        <span className="menuBg" id="menuBg" style={{ 
+                            //opacity: `${this.state.hovered ? '1' : '0'}`,
+                            backgroundImage: 'url(' + this.state.defaultMenuImage + ')', 
+                        }}></span>
                         <Nav defaultActiveKey="/" className="flex-column" id="mainMenu">                            
                             {
                                 Object.values(this.state.mainMenuItems).map(function(menuItem , index) {
@@ -76,7 +91,7 @@ class Menu extends Component {
                                     }
                                     return(
                                         // <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onMouseOver={this.hoverOn()}>{menuName}</Nav.Link>
-                                        <Nav.Link activeClassname="active" key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onClick={this.menuclickFunc} onMouseOver={this.hoverOn}>                                            
+                                        <Nav.Link activeClassname="active" key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onClick={this.menuclickFunc} onMouseOver={this.hoverOn} onMouseOut={this.hoverOff}>                                            
                                             {menuName}
                                         </Nav.Link>
                                     )

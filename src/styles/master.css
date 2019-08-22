@@ -176,8 +176,24 @@ body{
     height: 100%;
     background-size: cover;
     background-position: center;
+    opacity: 0;
 }
 #mainMenu {
     position: relative;
     z-index: 2;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-bottom: 4rem;
+}
+#mainMenu .nav-link {
+    width: 50%;
+    color: #444;
+    font-weight: 900;
+    font-size: 3rem;
+    padding: 1rem 0;
+}
+#mainMenu .nav-link:hover , 
+#mainMenu .nav-link.active{
+    color: #fff;
 }
