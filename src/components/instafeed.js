@@ -17,29 +17,40 @@ const Instagram = () => {
         userId: 3160822017 ,
     }
 
-    const { data, loading, error } = useAbortableFetch(buildUrl(options))
+    const { data, loading, error } = useAbortableFetch(buildUrl(options)+'&count=3')
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
     if (!data) return null;
    
-    console.log('data' , data);
     return (
-        <div>
-            {// eslint-disable-next-line no-unused-vars
-                data.data.map(({ images }, index) => {
-                    const image = images[options.resolution]
-                    console.log('image' , images);
-                    return (
-                        <img
-                        key={index}
-                        src={image.url}
-                        width={image.width}
-                        height={image.height}
-                        alt=""
-                        />
-                    )
-                })}
-        </div>
+        <section className="sectionWrap" id="instaFeedWrap">
+            <div className="insideSecWrap d-flex flex-wrap">
+                <div className="instaContent">
+                    <h2>
+                        <span>Find me on</span>
+                        Instagram
+                    </h2>
+                    <h3><span>@</span>dariasfamily</h3>
+                </div>
+                <div className="instaFeed d-flex flex-wrap justify-content-between">
+                    {// eslint-disable-next-line no-unused-vars
+                        data.data.map(({ images }, index) => {
+                            const image = images[options.resolution]
+                            return (
+                                <div className="instaImg" key={index}>
+                                    <img                                        
+                                        src={image.url}
+                                        width={image.width}
+                                        height={image.height}
+                                        alt={images.caption}
+                                    />
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        </section>
     )
 }
 

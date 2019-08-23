@@ -1,3 +1,51 @@
+/********reset style*************************/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;}
+body {line-height:1;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display:block;}
+blockquote, q {quotes:none;}
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none;}
+a {margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;}
+ins {background-color:#ff9;color:#000;text-decoration:none;}
+mark {background-color:#ff9;color:#000; font-style:italic;font-weight:bold;}
+del {text-decoration: line-through;}
+abbr[title], dfn[title] {border-bottom:1px dotted;cursor:help;}
+table {border-collapse:collapse;border-spacing:0;}
+hr {display:block;height:1px;border:0;   border-top:1px solid #cccccc;margin:1em 0;padding:0;}
+input, select {vertical-align:middle;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+h1, .h1 {font-size: 36px;}
+h1{font-size: 36px;}
+h2{font-size: 30px;}
+h3{font-size: 24px;}
+h4{font-size: 18px;}
+h5{font-size: 14px;}
+.clear{
+  clear:both;
+}
+img{
+  max-width: 100%;
+  height: auto;
+}
+a:hover ,
+a:focus{
+  outline: none;
+  text-decoration: none;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap');
 body{
     font-family: 'Montserrat', sans-serif !important;
@@ -196,4 +244,104 @@ body{
 #mainMenu .nav-link:hover , 
 #mainMenu .nav-link.active{
     color: #fff;
+}
+#instaFeedWrap {
+    padding: 4rem 2rem 7rem;
+}
+.instaContent {
+    width: 30%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 2rem;
+}
+.instaFeed {
+    width: 70%;
+}
+.instaImg {
+    width: 30%;
+}
+.instaContent h2 {
+    font-weight: 600;
+    font-size: 4.8rem;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    line-height: 1;
+}
+.instaContent h2 span , 
+.meetDariaCont h2 span {
+    -moz-text-fill-color: white;
+    -moz-text-stroke-width: 1px;
+    -moz-text-stroke-color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.instaContent h3 {
+    font-weight: 600;
+    font-size: 2.6rem;
+    margin-top: 2rem;
+    color: #000;
+}
+.instaContent h3 span {
+    font-weight: 600;
+    color: #777;
+}
+.instaImg:nth-child(2) {
+    margin-top: -3rem;
+}
+#meetDariaWrap {
+    padding: 5rem 0;
+}
+.meetDariaCont {
+    width: 42%;
+    padding-left: 9rem;
+    line-height: 1.8;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-top: auto;
+    padding-bottom: 4rem;
+}
+.meetDariaImgAnim {
+    width: 50%;
+    min-height: 555px;
+    position: relative;
+    overflow: hidden;
+    /* -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: 900;
+    font-size: 9rem; */
+}
+.meetDariaCont h2 {
+    margin-bottom: 2rem;
+    font-weight: 800;
+    font-size: 5rem;
+}
+.meetDariaImgAnim .meetBgEle {
+    position: absolute;
+    top: 0;
+    width: 90px;
+    height: 100%;
+    border-radius: 8px;
+}
+#meetBg1 {
+    left: 0;
+    background-position: left center;
+}
+#meetBg2 {
+    left: 12rem;
+    background-position: 15% center;
+}
+#meetBg3 {
+    right: 22rem;
+    background-position: 50% center;
+}
+#meetBg4 {
+    right: 10rem;
+    background-position: 68% center;
+}
+#meetBg5 {
+    right: -1.5rem;
+    background-position: right center;
 }
