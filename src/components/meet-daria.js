@@ -11,7 +11,6 @@ class MeetDaria extends Component {
       }
 
     render() {
-        console.log(this.props.homeParams)
         return (
             <section className="sectionWrap d-flex justify-content-between flex-wrap" id="meetDariaWrap">
                 <div className="meetDariaCont">

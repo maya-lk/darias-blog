@@ -91,7 +91,7 @@ class Menu extends Component {
                                     }
                                     return(
                                         // <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onMouseOver={this.hoverOn()}>{menuName}</Nav.Link>
-                                        <Nav.Link activeClassname="active" key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onClick={this.menuclickFunc} onMouseOver={this.hoverOn} onMouseOut={this.hoverOff}>                                            
+                                        <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onClick={this.menuclickFunc} onMouseOver={this.hoverOn} onMouseOut={this.hoverOff}>                                            
                                             {menuName}
                                         </Nav.Link>
                                     )

@@ -345,3 +345,17 @@ body{
     right: -1.5rem;
     background-position: right center;
 }
+.seekVideoWrap {
+    position: relative;
+    width: 55%;
+}
+.videoSeekerWrap {
+    position: absolute;
+    z-index: 10;
+    bottom: 12rem;
+    left: 88%;
+    width: 464px;
+}
+#seekingVideoWrap {
+    padding: 4rem 0 6rem;
+}
