@@ -6,37 +6,42 @@ class SeoHead extends Component {
     constructor(props, context){
         super(props, context)
         this.state = {
+            description : '',
+            locale : '',
+            type : '',
+            title : '',
+            site_name : '',
+            card : ''
         }
         
     }
 
-    render() { 
-        console.log(this.props.seo);
+    componentDidMount(){
+        this.setState({
+            // description : this.props.seo[0].content,
+            // locale : this.props.seo[2].content,
+            // type : this.props.seo[3].content,
+            // title : this.props.seo[4].content,
+            // card : this.props.seo[8].content
+        })
+    }
+
+    render() {
+        //var testt = this.props.seo[0];
         return(
             <Helmet>
                 {
-                    Object.values(this.props.seo).map(function(meta , index) {
-                        var seoMetaTag = '';
-                        var titleTag = '';
-                        if( Object.keys(meta)[0] === 'name' ){
-                            seoMetaTag = '<meta name="'+meta.name+'" content="'+meta.content+'"/>';  
-                        }else if( Object.keys(meta)[0] === 'property' ){
-                            seoMetaTag = '<meta property="'+meta.property+'" content="'+meta.content+'"/>';
-                        }else{
-                            seoMetaTag = ''; 
-                        }
-
-                        if( meta.property === 'og:title' ){
-                            titleTag = '<title>'+meta.content+'</title>';
-                        }else{
-                            titleTag = '';
-                        }
-
-                        return(
-                            <div key={index}>{titleTag}{seoMetaTag}</div>
-                        )
-                    })
+                    console.log(this.props.seo[0])
                 }
+                <title>{this.state.title}</title>
+                <meta name="description" content={this.state.description}/>
+                <meta property="og:locale" content={this.state.locale} />
+                <meta property="og:type" content={this.state.type} />
+                <meta property="og:title" content={this.state.title} />
+                <meta property="og:description" content={this.state.description} />
+                <meta name="twitter:card" content={this.state.card} />
+                <meta name="twitter:description" content={this.state.description} />
+                <meta name="twitter:title" content={this.state.title} />
             </Helmet>
         )
     }
