@@ -10,9 +10,9 @@ class SeekVideo extends Component {
         this.state = {
         }
         
-      }
+    }
 
-    render() {    
+    render() { 
         return (
             <section className="sectionWrap d-flex justify-content-between flex-wrap" id="seekingVideoWrap">
                 <SeekVideoElement seekvideoURL={this.props.seekvideoparam}/>
@@ -26,7 +26,7 @@ class SeekVideo extends Component {
                                 contClass = 'even';
                             }
                             return(
-                                <div key={index} className={contClass}>{content}</div>
+                                <div key={index} className={contClass}>{content.name}</div>
                             )
                         })
                     }

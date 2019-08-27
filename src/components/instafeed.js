@@ -7,14 +7,14 @@ import useAbortableFetch from 'use-abortable-fetch'
 const Instagram = () => {
 
     const options = {
-        accessToken: '3160822017.3c79439.0ccbf529e8244b278b62d6a81c38044b',
-        clientId: '3c79439c2497472f8d2546afcb9f3bfb',
+        accessToken: '18829163935.1677ed0.f3b6fdb9235a413b98729648532750f5',
+        clientId: '46c9ec7c74014027a278761ba09cf148',
         get: 'user', // popular, user
         locationId: null,
         resolution: 'standard_resolution', // thumbnail, low_resolution, standard_resolution
         sortBy: 'none', // none, least-commented, least-liked, least-recent, most-commented, most-liked, most-recent, random
         tagName: null,
-        userId: 3160822017 ,
+        userId: 18829163935 ,
     }
 
     const { data, loading, error } = useAbortableFetch(buildUrl(options)+'&count=3')

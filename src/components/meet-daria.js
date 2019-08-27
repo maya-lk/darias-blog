@@ -15,7 +15,7 @@ class MeetDaria extends Component {
             <section className="sectionWrap d-flex justify-content-between flex-wrap" id="meetDariaWrap">
                 <div className="meetDariaCont">
                     <h2><span>Meet</span> Daria</h2>
-                    <div dangerouslySetInnerHTML={{__html: this.props.homeParams.meet_daria_cont}} />
+                    <div dangerouslySetInnerHTML={{__html: this.props.homeParams.meet_daria_content}} />
                 </div>
                 <MeetDariaBg animbg={this.props.homeParams.meet_daria_image}/>                
             </section>
