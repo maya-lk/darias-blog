@@ -15,7 +15,7 @@ export default class MainVideo extends Component {
         return (
             <Player
               playsInline={true}
-              poster="/assets/poster.png"
+              poster={this.props.videoPoster}
               src={this.props.videoUrl}
               autoPlay={true}
               muted={true}

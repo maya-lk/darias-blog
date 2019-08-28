@@ -16,8 +16,7 @@ class HomeComponent extends Component {
     this.state = {
       homepage : '',
       seekContent : '',
-      seo : '',
-      mainVideo: ''
+      seo : ''
     }
     
   }
@@ -27,8 +26,7 @@ class HomeComponent extends Component {
     .then(data => this.setState({
       homepage : data.data.acf,
       seekContent : data.data.acf.music_content,
-      seo : data.data.yoast_meta,
-      mainVideo: data.data.acf.video
+      seo : data.data.yoast_meta
     }))
     .catch(error => console.log(error))
   }
@@ -36,7 +34,7 @@ class HomeComponent extends Component {
   render() {
     return (
       <div className="maniContent">
-        <MainVideo videoUrl={this.state.mainVideo} />
+        <MainVideo videoUrl={this.state.homepage.video} videoPoster={this.state.homepage.video_poster} />
         <SeoHead seo={this.state.seo}/>         
         <MeetDaria homeParams={this.state.homepage}/>
         <SeekVideo seekvideoparam={this.state.homepage.music_video} seekVideoContent={this.state.seekContent}/>
