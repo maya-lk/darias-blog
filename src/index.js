@@ -7,8 +7,7 @@ import 'animate.css/animate.min.css';
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
-        
+        <App />        
     </BrowserRouter> , 
     document.getElementById('root')
 )

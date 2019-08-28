@@ -79,15 +79,15 @@ class Menu extends Component {
                             //opacity: `${this.state.hovered ? '1' : '0'}`,
                             backgroundImage: 'url(' + this.state.defaultMenuImage + ')', 
                         }}></span>
-                        <Nav defaultActiveKey="/" className="flex-column" id="mainMenu">                            
+                        <Nav defaultActiveKey={`${process.env.PUBLIC_URL}`} className="flex-column" id="mainMenu">                            
                             {
                                 Object.values(this.state.mainMenuItems).map(function(menuItem , index) {
                                     var menuName = menuItem.title;
-                                    var menuslug = '/';
+                                    var menuslug = `${process.env.PUBLIC_URL}`;
                                     if (menuName === 'Home') {
-                                        menuslug = '/';
+                                        menuslug = `${process.env.PUBLIC_URL}`;
                                     } else {
-                                        menuslug = '/'+menuName.toLowerCase().replace(/ /g, "-");
+                                        menuslug = `${process.env.PUBLIC_URL}/`+menuName.toLowerCase().replace(/ /g, "-");
                                     }
                                     return(
                                         // <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onMouseOver={this.hoverOn()}>{menuName}</Nav.Link>

@@ -80,19 +80,19 @@ export default class Footer extends React.Component{
                 <div className="bottomFooterLink d-flex justify-content-between">
                     <Nav as="ul" className="footerNav">
                         <Nav.Item as="li">
-                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to={`${process.env.PUBLIC_URL}`}>Home</Nav.Link>
                         </Nav.Item>
                         <Nav.Item as="li">
-                            <Nav.Link as={Link} to="/about">About</Nav.Link>
+                            <Nav.Link as={Link} to={`${process.env.PUBLIC_URL}/about`}>About</Nav.Link>
                         </Nav.Item>
                         <Nav.Item as="li">
-                            <Nav.Link as={Link} to="/what-i-do">What i do</Nav.Link>
+                            <Nav.Link as={Link} to={`${process.env.PUBLIC_URL}/what-i-do`}>What i do</Nav.Link>
                         </Nav.Item>
                         <Nav.Item as="li">
-                            <Nav.Link as={Link} to="/gallery">Gallery</Nav.Link>
+                            <Nav.Link as={Link} to={`${process.env.PUBLIC_URL}/gallery`}>Gallery</Nav.Link>
                         </Nav.Item>
                         <Nav.Item as="li">
-                            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+                            <Nav.Link as={Link} to={`${process.env.PUBLIC_URL}/contact`}>Contact</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     <div className="cpyrights">

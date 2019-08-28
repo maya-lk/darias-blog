@@ -3,6 +3,7 @@ import { Navbar } from 'react-bootstrap'
 import MenuButton from './MenuButton'
 import Menu from './Menu'
 import API from '../lib/api';
+import { Link } from 'react-router-dom';
 
 export default class Header extends React.Component{
     constructor(props, context){
@@ -47,7 +48,7 @@ export default class Header extends React.Component{
             <header className="header">               
                 <Menu handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible} togglemenuFunc={this.toggleMenu}/>
                 <Navbar className="mainNavbar justify-content-between">
-                    <Navbar.Brand href="/">
+                    <Navbar.Brand href={`${process.env.PUBLIC_URL}`} as={Link} to={`${process.env.PUBLIC_URL}`}>
                         {
                             this.state.settings.map((setting , index) => {
                                 return(

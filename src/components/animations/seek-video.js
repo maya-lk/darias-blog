@@ -97,7 +97,7 @@ class SeekVideoElement extends Component {
             <div className="seekVideoWrap">
                 <video
                     style={{ width: '100%' }}
-                    src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                    src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
                     ref={this.video}
                 />
                     {domain && values ? (
