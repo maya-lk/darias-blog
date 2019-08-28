@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/darias-blog/static/css/main.79b14a73.chunk.css",
+    "main.js": "/darias-blog/static/js/main.b98a259b.chunk.js",
+    "main.js.map": "/darias-blog/static/js/main.b98a259b.chunk.js.map",
+    "runtime~main.js": "/darias-blog/static/js/runtime~main.fa0cf740.js",
+    "runtime~main.js.map": "/darias-blog/static/js/runtime~main.fa0cf740.js.map",
+    "static/css/2.bf073607.chunk.css": "/darias-blog/static/css/2.bf073607.chunk.css",
+    "static/js/2.47e9dc10.chunk.js": "/darias-blog/static/js/2.47e9dc10.chunk.js",
+    "static/js/2.47e9dc10.chunk.js.map": "/darias-blog/static/js/2.47e9dc10.chunk.js.map",
+    "index.html": "/darias-blog/index.html",
+    "precache-manifest.927b9236f5d6627d3ed6590c7ed6708a.js": "/darias-blog/precache-manifest.927b9236f5d6627d3ed6590c7ed6708a.js",
+    "service-worker.js": "/darias-blog/service-worker.js",
+    "static/css/2.bf073607.chunk.css.map": "/darias-blog/static/css/2.bf073607.chunk.css.map",
+    "static/css/main.79b14a73.chunk.css.map": "/darias-blog/static/css/main.79b14a73.chunk.css.map"
+  }
+}
