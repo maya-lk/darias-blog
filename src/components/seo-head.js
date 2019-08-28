@@ -17,31 +17,42 @@ class SeoHead extends Component {
     }
 
     componentDidMount(){
-        this.setState({
-            // description : this.props.seo[0].content,
-            // locale : this.props.seo[2].content,
-            // type : this.props.seo[3].content,
-            // title : this.props.seo[4].content,
-            // card : this.props.seo[8].content
-        })
+
+        
+        
     }
 
     render() {
-        //var testt = this.props.seo[0];
+        if( typeof this.props.seo[0] === 'object' && this.props.seo[0] !== null ){
+            var description = this.props.seo[0].content
+        }
+
+        if( typeof this.props.seo[2] === 'object' && this.props.seo[2] !== null ){
+            var locale = this.props.seo[2].content
+        }
+
+        if( typeof this.props.seo[3] === 'object' && this.props.seo[3] !== null ){
+            var type = this.props.seo[3].content
+        }
+
+        if( typeof this.props.seo[4] === 'object' && this.props.seo[4] !== null ){
+            var title = this.props.seo[4].content
+        }
+
+        if( typeof this.props.seo[8] === 'object' && this.props.seo[8] !== null ){
+            var card = this.props.seo[8].content
+        }
         return(
             <Helmet>
-                {
-                    console.log(this.props.seo[0])
-                }
-                <title>{this.state.title}</title>
-                <meta name="description" content={this.state.description}/>
-                <meta property="og:locale" content={this.state.locale} />
-                <meta property="og:type" content={this.state.type} />
-                <meta property="og:title" content={this.state.title} />
-                <meta property="og:description" content={this.state.description} />
-                <meta name="twitter:card" content={this.state.card} />
-                <meta name="twitter:description" content={this.state.description} />
-                <meta name="twitter:title" content={this.state.title} />
+                <title>{title}</title>
+                <meta name="description" content={description}/>
+                <meta property="og:locale" content={locale} />
+                <meta property="og:type" content={type} />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={description} />
+                <meta name="twitter:card" content={card} />
+                <meta name="twitter:description" content={description} />
+                <meta name="twitter:title" content={title} />
             </Helmet>
         )
     }
