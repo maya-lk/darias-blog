@@ -25,7 +25,7 @@ class Menu extends Component {
     }
 
     hoverOn(e) {
-        var hoverImg = e.target.getAttribute('data-hover');
+        var hoverImg = (e.target.getAttribute('data-hover'))? e.target.getAttribute('data-hover') : this.state.defaultMenuImage ;
         document.getElementById('menuBg').style.backgroundImage = 'url('+hoverImg+')';
         // document.getElementById('menuBg').classList.add('show');
         this.setState({hovered: true});
@@ -91,7 +91,7 @@ class Menu extends Component {
                                     }
                                     return(
                                         // <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onMouseOver={this.hoverOn()}>{menuName}</Nav.Link>
-                                        <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onClick={this.menuclickFunc} onMouseOver={this.hoverOn} onMouseOut={this.hoverOff}>                                            
+                                        <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onClick={this.menuclickFunc} onMouseOver={this.hoverOn} onMouseOut={this.hoverOff}>
                                             {menuName}
                                         </Nav.Link>
                                     )
