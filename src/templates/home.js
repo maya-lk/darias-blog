@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import API from '../lib/api';
 
 //Components
-import InstaFeed from '../components/instafeed';
-import MeetDaria from '../components/meet-daria';
-import SeekVideo from '../components/seeking-video';
 import SeoHead from '../components/seo-head';
 import MainVideo from '../components/main-video';
-
+import MeetDaria from '../components/meet-daria';
+import SeekVideo from '../components/seeking-video';
+import ThingsIDo from '../components/things-i-do';
+import BlogSection from '../components/blog';
+import InstaFeed from '../components/instafeed';
 
 class HomeComponent extends Component {
 
@@ -23,6 +24,7 @@ class HomeComponent extends Component {
   }
 
   componentDidMount(){
+    //Get Home Page Content
     API.get('wp/v2/pages/2')
     .then(data => this.setState({
       homepage : data.data.acf,
@@ -43,6 +45,8 @@ class HomeComponent extends Component {
         <SeoHead seo={this.state.seo}/>         
         <MeetDaria homeParams={this.state.homepage}/>
         <SeekVideo seekVideosUrls={this.state.seekVideos} seekVideoContent={this.state.seekContent}/>
+        <ThingsIDo/>
+        <BlogSection/>
         <InstaFeed/>
       </div>
     );
