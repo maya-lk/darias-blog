@@ -15,7 +15,7 @@ class SeekVideo extends Component {
     render() { 
         return (
             <section className="sectionWrap d-flex justify-content-between flex-wrap" id="seekingVideoWrap">
-                <SeekVideoElement seekvideoURL={this.props.seekvideoparam}/>
+                <SeekVideoElement seekVideoSmall={this.props.seekVideosUrls.small} seekVideoFull={this.props.seekVideosUrls.full}/>
                 <div className="seekVideoCont">
                     {
                         Object.values(this.props.seekVideoContent).map(function(content , index) {

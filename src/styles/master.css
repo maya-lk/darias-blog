@@ -165,7 +165,7 @@ body{
     left: 0;
     transition: transform 0.8s cubic-bezier(0, .52, 0, 1);
     overflow: scroll;
-    z-index: 1000;
+    z-index: 10000;
     -webkit-transition: transform 0.8s cubic-bezier(0, .52, 0, 1);
     -moz-transition: transform 0.8s cubic-bezier(0, .52, 0, 1);
     -ms-transition: transform 0.8s cubic-bezier(0, .52, 0, 1);
@@ -344,4 +344,30 @@ body{
 #meetBg5 {
     right: -1.5rem;
     background-position: right center;
+}
+#mainVideoWrap {
+    position: relative;
+    overflow: hidden;
+}
+.imgOverlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    z-index: 1000;
+}
+#mainVideoWrap .imgOverlay::after {
+    position: absolute;
+    right: 0;
+    content: "";
+    width: 207px;
+    height: calc(100% - 38vh);
+    background-color: #fff;
+    top: 0;
+}
+.menuOpen{
+    overflow: hidden;
 }

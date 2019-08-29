@@ -29,6 +29,9 @@ class VideoSlider extends Component {
     render() {
         const { domain, values, onChange, onUpdate, onSlideStart } = this.props;
 
+        console.log('onChange' , onChange);
+        console.log('domain' , domain);
+
         return (
             <Slider
                 mode={1}

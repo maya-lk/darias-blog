@@ -55,11 +55,13 @@ class Menu extends Component {
     }
 
     render() {
-        
+        var body = document.body;
         if (this.props.menuVisibility) {
             this.visibility = "show";
+            body.classList.add("menuOpen");
         }else{
             this.visibility = "hide";
+            body.classList.remove("menuOpen");
         }
     
         return (

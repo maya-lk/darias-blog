@@ -16,7 +16,8 @@ class HomeComponent extends Component {
     this.state = {
       homepage : '',
       seekContent : '',
-      seo : ''
+      seo : '',
+      seekVideos : {}
     }
     
   }
@@ -26,7 +27,11 @@ class HomeComponent extends Component {
     .then(data => this.setState({
       homepage : data.data.acf,
       seekContent : data.data.acf.music_content,
-      seo : data.data.yoast_meta
+      seo : data.data.yoast_meta,
+      seekVideos : {
+        small : data.data.acf.seek_video_small,
+        full : data.data.acf.seek_video_full
+      }
     }))
     .catch(error => console.log(error))
   }
@@ -37,7 +42,7 @@ class HomeComponent extends Component {
         <MainVideo videoUrl={this.state.homepage.video} videoPoster={this.state.homepage.video_poster} />
         <SeoHead seo={this.state.seo}/>         
         <MeetDaria homeParams={this.state.homepage}/>
-        <SeekVideo seekvideoparam={this.state.homepage.music_video} seekVideoContent={this.state.seekContent}/>
+        <SeekVideo seekVideosUrls={this.state.seekVideos} seekVideoContent={this.state.seekContent}/>
         <InstaFeed/>
       </div>
     );
