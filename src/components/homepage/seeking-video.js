@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import SeekVideoElement from './animations/seek-video'
-import '../styles/seek-video.css'
+import SeekVideoElement from '../animations/seek-video'
+import '../../styles/seek-video.css'
 //import Nav from 'react-bootstrap/Nav';
 
 class SeekVideo extends Component {

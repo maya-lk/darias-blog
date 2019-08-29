@@ -3,12 +3,12 @@ import API from '../lib/api';
 
 //Components
 import SeoHead from '../components/seo-head';
-import MainVideo from '../components/main-video';
-import MeetDaria from '../components/meet-daria';
-import SeekVideo from '../components/seeking-video';
-import ThingsIDo from '../components/things-i-do';
-import BlogSection from '../components/blog';
-import InstaFeed from '../components/instafeed';
+import MainVideo from '../components/homepage/main-video';
+import MeetDaria from '../components/homepage/meet-daria';
+import SeekVideo from '../components/homepage/seeking-video';
+import ThingsIDo from '../components/homepage/things-i-do';
+import BlogSection from '../components/homepage/blog';
+import InstaFeed from '../components/homepage/instafeed';
 
 class HomeComponent extends Component {
 

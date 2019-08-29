@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Player , ControlBar } from 'video-react';
 import 'video-react/dist/video-react.css';
-import mainVideoOverlay from '../images/main-video-bg.png'
+import mainVideoOverlay from '../../images/main-video-bg.png'
 
 export default class MainVideo extends Component {
 
