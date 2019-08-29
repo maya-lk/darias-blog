@@ -72,6 +72,20 @@ class SeekVideoElement extends Component {
         });
     };
 
+    onSlideEnd = (values) => {
+        this.setState({ isSeeking: false }, () => {
+            if( values[0] !== convert(this.video.current.duration) ){
+                this.video.current.currentTime = 0;
+                this.video.current.src = this.props.seekVideoSmall;
+                this.video.current.pause();
+            }else{
+                this.video.current.src = this.props.seekVideoFull;
+                this.video.current.play();
+                console.log(this.video.current.src);
+            }
+        });
+    };
+
     onChange = values => {
         this.setState(prevState => {
             this.video.current.currentTime = toSeconds(values[0]);
@@ -97,7 +111,8 @@ class SeekVideoElement extends Component {
             <div className="seekVideoWrap">
                 <video
                     style={{ width: '100%' }}
-                    src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                    //src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                    src={this.props.seekVideoSmall}
                     ref={this.video}
                 />
                     {domain && values ? (
@@ -109,6 +124,7 @@ class SeekVideoElement extends Component {
                                 onChange={this.onChange}
                                 onUpdate={this.onUpdate}
                                 onSlideStart={this.onSlideStart}
+                                onSlideEnd={this.onSlideEnd}
                             />
                         </div>
                     </React.Fragment>

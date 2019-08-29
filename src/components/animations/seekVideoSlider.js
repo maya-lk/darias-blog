@@ -4,7 +4,7 @@ import { Handle, Track } from './seekvideocomponents'; // example render compone
 
 const sliderStyle = {
     position: 'relative',
-    width: '90%',
+    width: '91%',
     margin: '0 5%'
 };
 
@@ -27,10 +27,7 @@ const railStyle = {
 
 class VideoSlider extends Component {
     render() {
-        const { domain, values, onChange, onUpdate, onSlideStart } = this.props;
-
-        console.log('onChange' , onChange);
-        console.log('domain' , domain);
+        const { domain, values, onChange, onUpdate, onSlideStart , onSlideEnd } = this.props;
 
         return (
             <Slider
@@ -41,6 +38,7 @@ class VideoSlider extends Component {
                 onUpdate={onUpdate}
                 onChange={onChange}
                 onSlideStart={onSlideStart}
+                onSlideEnd={onSlideEnd}
                 values={values}
             >
                 <Rail>
