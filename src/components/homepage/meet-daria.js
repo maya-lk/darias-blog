@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MeetDariaBg from '../animations/meet-daria-bg'
+import MeetDariaBg from './animations/meet-daria-bg'
 
 class MeetDaria extends Component {
 

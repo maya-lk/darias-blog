@@ -371,3 +371,87 @@ body{
 .menuOpen{
     overflow: hidden;
 }
+#blogSecWrap {
+    padding: 0 3rem 5rem;
+    overflow: hidden;
+}
+.blogSecCont .nav-item {
+    color: #000;
+    font-weight: 700;
+    font-size: 5rem;
+    position: relative;
+}
+.blogSecCont .odd.nav-item {
+    padding: 0 2rem;
+    -moz-text-fill-color: white;
+    -moz-text-stroke-width: 2px;
+    -moz-text-stroke-color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+.blogSecCont .odd.nav-item .svg-inline--fa {
+    font-size: 1rem;
+}
+.blogSecCont .odd.nav-item span {
+    display: inline-block;
+    padding: 0 2rem;
+}
+.blogSecCont {
+    width: 55%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.8;
+    position: relative;
+    z-index: 10;
+    padding-top: 6rem;
+}
+.blogSecCont h2 {
+    -moz-text-fill-color: transparent;
+    -moz-text-stroke-width: 2px;
+    -moz-text-stroke-color: black;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    font-size: 18rem;
+    font-weight: 800;
+    margin-top: -3rem;
+    margin-bottom: -2rem;
+}
+.postsWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    transform: translateY(-1rem) translateX(-3rem) rotateZ(-6deg);
+    gap: 20px;
+    -webkit-transform: translateY(-1rem) translateX(-3rem) rotateZ(-6deg);
+    -moz-transform: translateY(-1rem) translateX(-3rem) rotateZ(-6deg);
+    -ms-transform: translateY(-1rem) translateX(-3rem) rotateZ(-6deg);
+    -o-transform: translateY(-1rem) translateX(-3rem) rotateZ(-6deg);
+}
+.postsWrapper .blogPost:first-child {
+    position: relative;
+    grid-row: span 2;
+    align-items: center;
+}
+.blogPostWrap {
+    width: 45%;
+}
+.postsWrapper .blogPost {
+    display: flex;
+    justify-content: center;
+}
+.blogPost h3 {
+    text-align: center;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-top: 0.75rem;
+}
+.blogPost .postImg {
+    border: 1px solid #a5a5a5;
+    padding: 0.5rem;
+}
+.blogSecCont p {
+    display: inline-block;
+    width: 80%;
+}

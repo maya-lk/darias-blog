@@ -18,7 +18,9 @@ class HomeComponent extends Component {
       homepage : '',
       seekContent : '',
       seo : '',
-      seekVideos : {}
+      seekVideos : {},
+      blogTitles: {},
+      blogPosts : {}
     }
     
   }
@@ -33,7 +35,15 @@ class HomeComponent extends Component {
       seekVideos : {
         small : data.data.acf.seek_video_small,
         full : data.data.acf.seek_video_full
-      }
+      },
+      blogTitles : data.data.acf.blog_titles
+    }))
+    .catch(error => console.log(error))
+
+    //Get Blog Posts
+    API.get('wp/v2/posts?per_page=3')
+    .then(data => this.setState({
+      blogPosts : data.data
     }))
     .catch(error => console.log(error))
   }
@@ -46,7 +56,7 @@ class HomeComponent extends Component {
         <MeetDaria homeParams={this.state.homepage}/>
         <SeekVideo seekVideosUrls={this.state.seekVideos} seekVideoContent={this.state.seekContent}/>
         <ThingsIDo/>
-        <BlogSection/>
+        <BlogSection blogTitles={this.state.blogTitles} blogContent={this.state.homepage.blog_section_content} blogPosts={this.state.blogPosts}/>
         <InstaFeed/>
       </div>
     );
