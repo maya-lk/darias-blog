@@ -455,3 +455,100 @@ body{
     display: inline-block;
     width: 80%;
 }
+#thingsSecWrap {
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+    min-height: 250px;
+}
+#thingsSecWrap .mainTitle {
+    position: absolute;
+    margin: 0;
+    right: 0;
+    top: 0;
+    width: 70%;
+    background-color: #fff;
+    padding: 1rem 1rem;
+    color: #000;
+    font-weight: 700;
+    font-size: 2.5rem;
+    z-index: 10;
+}
+#thingsSecWrap .bottomBar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    height: 80px;
+    width: 30%;
+    background-color: #fff;
+}
+.thingsTaxContentWrap {
+    width: 58%;
+    position: relative;
+}
+.thingsDoContentWrap {
+    width: 42%;
+    padding-top: 5rem;
+}
+.thingsTaxContentWrap .imgOverlay {
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+    -ms-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+}
+.thingsTaxWrap {
+    width: 52%;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 9rem;
+    padding-left: 5rem;
+    padding-top: 5rem;
+}
+.thingsTaxConWrap {
+    width: 48%;
+    position: relative;
+    z-index: 10;
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+}
+.thingsTaxWrap .nav-link {
+    color: #434242;
+    font-weight: 800;
+    font-size: 3rem;
+    padding: 1rem 1rem;
+}
+.thingsTaxWrap .nav-link:hover , 
+.thingsTaxWrap .nav-link.active{
+    color: #ffffff;
+}
+.taxDescription {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8;
+}
+.taxTitle {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    font-size: 8rem;
+    -moz-text-fill-color: rgba(0,0,0,0.6);
+    -moz-text-stroke-width: 2px;
+    -moz-text-stroke-color: #ffffff;
+    -webkit-text-fill-color: rgba(0,0,0,0.6);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #ffffff;
+}
+.sc-bxivhb {
+    position: absolute !important;
+    opacity: 0.2;
+}
