@@ -31,7 +31,7 @@ class ThingsTaxContent extends Component {
                     transitionTime="3s"
                 />
                 <div className="thingsTaxWrap">
-                    <Nav className="flex-column" id="termList">
+                    <Nav className="flex-column" id="termList" variant="pills">
                         {
                             Object.values(taxonomyList).map(function(term , index) {
                                 let activated = false;
@@ -47,7 +47,7 @@ class ThingsTaxContent extends Component {
                                     activated = false;
                                 }
                                 return(
-                                    <Nav.Link href="#" key={term.id} active={activated} onClick={(e) => this.props.OnClickThings(clickedObj , e)}>{term.name}</Nav.Link>
+                                    <Nav.Link eventKey={term.slug} key={term.id} active={activated} onClick={(e) => this.props.OnClickThings(clickedObj , e)}>{term.name}</Nav.Link>
                                 )
                             }.bind(this))
                         }

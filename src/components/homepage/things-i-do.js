@@ -54,8 +54,6 @@ class ThingsIDo extends Component {
     }
 
     render() {
-        console.log('thingsList' , this.state.thingsList);
-        console.log('termID' , this.state.termID);
         return (
             <section className="sectionWrap d-flex justify-content-between flex-wrap" id="thingsSecWrap">
                 <h3 className="mainTitle">Things i do</h3>
@@ -64,7 +62,10 @@ class ThingsIDo extends Component {
                     OnClickThings={this.OnClickThings}
                     termSingleImg={this.state.termImage}
                 />
-                <ThingsContent thingsList={this.state.thingsList}/>
+                <ThingsContent 
+                    thingsList={this.state.thingsList}
+                    taxonomyList={this.state.thingsTax}
+                />
                 <div className="bottomBar"></div>
             </section>
         )
