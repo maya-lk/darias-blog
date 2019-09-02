@@ -15,13 +15,15 @@ class ThingsIDo extends Component {
             termImage : '',
             termID : '',
             thingsList : {},
-            isFancyboxOpen : false
+            isFancyboxOpen : false,
+            show: false
         }
 
         this.OnClickThings = this.OnClickThings.bind(this);
-        this.getTermRelatedThings = this.getTermRelatedThings.bind(this);
         this.OnFancyboxOpen = this.OnFancyboxOpen.bind(this);
         this.OnFancyboxClose = this.OnFancyboxClose.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount(){
@@ -32,15 +34,6 @@ class ThingsIDo extends Component {
         }))
         .catch(error => console.log(error))
 
-    }
-    
-    getTermRelatedThings(termID){
-
-        API.get(`wp/v2/things-do?things_tax=${termID}`)
-        .then(data => this.setState({
-            thingsList : data.data
-        }))
-        .catch(error => console.log(error))
     }
 
     OnClickThings(obj , e){
@@ -59,8 +52,6 @@ class ThingsIDo extends Component {
         }
         e.target.classList.add('active');
 
-        this.getTermRelatedThings(obj.id);
-
     }
 
     OnFancyboxOpen(){
@@ -73,6 +64,14 @@ class ThingsIDo extends Component {
         this.setState({
             isFancyboxOpen : false
         });
+    }
+
+    openModal () {
+        this.setState({show: true})
+    }
+
+    closeModal () {
+        this.setState({show: false})
     }
 
     render() {
@@ -96,6 +95,9 @@ class ThingsIDo extends Component {
                         thingsList={this.state.thingsList}
                         openFancybox={this.OnFancyboxOpen}
                         closeFancybox={this.OnFancyboxClose}
+                        openModal={this.openModal}
+                        closeModal={this.closeModal}
+                        show={this.state.isFancyboxOpen}
                     />
                 </Tab.Container>
                 <div className="bottomBar" style={{ transform : bottomBarStyle }}></div>

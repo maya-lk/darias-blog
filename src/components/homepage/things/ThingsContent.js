@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import Tab from 'react-bootstrap/Tab';
 import API from '../../../lib/api';
 import { Scrollbars } from 'react-custom-scrollbars';
-import ReactFancyBox from 'react-fancybox'
-import 'react-fancybox/lib/fancybox.css'
+import ReactFancyBox from 'react-fancybox';
+import 'react-fancybox/lib/fancybox.css';
+import 'react-modal-video/scss/modal-video.scss';
+import ModalVideo from 'react-modal-video';
+
 
 class ThingsContent extends Component {
 
@@ -23,7 +26,8 @@ class ThingsContent extends Component {
     }
 
     render() {
-        const { taxonomyList , openFancybox , closeFancybox } = this.props;
+        //const { taxonomyList , openFancybox , closeFancybox , openModal , closeModal , show } = this.props;
+        const { taxonomyList , openFancybox , closeFancybox , show  } = this.props;
 
         return (
             <div className="thingsDoContentWrap">
@@ -38,8 +42,40 @@ class ThingsContent extends Component {
                                         >
                                             {
                                                 Object.values(this.state.thingList).map((thing) => {
-                                                    console.log(thing);
-                                                    var thingItem = '';
+                                                    if( thing.tax_term.includes(term.id) )
+                                                        if( thing.type === 'Image' )
+                                                            return(                                                    
+                                                                <div key={thing.ID} className="thingItem imgItem">
+                                                                    <ReactFancyBox
+                                                                        thumbnail={thing.image.url}
+                                                                        image={thing.image.url}
+                                                                        onOpen={openFancybox}
+                                                                        onClose={closeFancybox}/>
+                                                                </div>
+                                                            )
+                                                        else if( thing.type === 'Youtube' ) 
+                                                            return (
+                                                                <div key={thing.ID} className="thingItem youtubeItem">
+                                                                    <ModalVideo
+                                                                        id={thing.ID} 
+                                                                        channel='youtube' 
+                                                                        isOpen={show} 
+                                                                        videoId={thing.youtube_id} 
+                                                                        onClose={closeFancybox} 
+                                                                    />
+                                                                    <button
+                                                                        className="openVideoBtn" 
+                                                                        onClick={openFancybox} 
+                                                                        style={{ backgroundImage : 'url(https://img.youtube.com/vi/'+thing.youtube_id+'/sddefault.jpg)' }}>Im video, Play me</button>
+                                                                </div>
+                                                            )
+                                                        else
+                                                            return <h1>hejsan</h1>
+                                                    else 
+                                                        return <div key={thing.ID} className="thingItem imgItem"></div>
+                                                })
+                                                //<div key={thing.ID} className="thingItem" dangerouslySetInnerHTML={{__html: thingItem}}></div>
+                                                /* var thingItem = '';
                                                     if( thing.tax_term.includes(term.id) ){
                                                         if( thing.type === 'Image' ){
                                                             thingItem = <ReactFancyBox
@@ -48,7 +84,16 @@ class ThingsContent extends Component {
                                                                 onOpen={openFancybox}
                                                                 onClose={closeFancybox}/>
                                                         }else if( thing.type === 'Youtube' ){
-                                                            thingItem = '<span style="background-image : url(https://img.youtube.com/vi/'+thing.youtube_id+'/maxresdefault.jpg)" class="imgOverlay youtubeComp"><a href="#">Im a video, Play me</a></span>';
+                                                            var poster = 'https://img.youtube.com/vi/'+thing.youtube_id+'/default.jpg';
+                                                            var src = 'https://www.youtube.com/watch?v='+thing.youtube_id;
+                                                            thingItem = <ModalVideo
+                                                                id={ (new Date() *1).toString() }
+                                                                src={src}
+                                                                poster={poster}
+                                                                show={show}
+                                                                showModal={openModal}
+                                                                handleClose={closeModal}
+                                                            />
                                                         }else if( thing.type === 'Custom' ){
                                                             thingItem = thing.title;
                                                         }else{
@@ -59,9 +104,7 @@ class ThingsContent extends Component {
                                                     }
                                                     return(                                                    
                                                         <div key={thing.ID} className="thingItem">{thingItem}</div>
-                                                    )
-                                                })
-                                                //<div key={thing.ID} className="thingItem" dangerouslySetInnerHTML={{__html: thingItem}}></div>
+                                                    ) */
                                             }
                                         </Scrollbars>
                                     </div>
