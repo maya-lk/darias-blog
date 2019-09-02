@@ -18,22 +18,26 @@ class ThingsIDo extends Component {
         }
 
         this.OnClickThings = this.OnClickThings.bind(this);
+        this.getTermRelatedThings = this.getTermRelatedThings.bind(this);
     }
 
     componentDidMount(){
         //Get Things Taxonomy List
-        API.get('wp/v2/things-tax?orderby=id')
+        API.get('wp/v2/things_tax?orderby=id')
         .then(data => this.setState({
             thingsTax : data.data
         }))
         .catch(error => console.log(error))
 
-        API.get(`wp/v2/things-do?things-tax=${this.state.termID}`)
+    }
+    
+    getTermRelatedThings(termID){
+
+        API.get(`wp/v2/things-do?things_tax=${termID}`)
         .then(data => this.setState({
             thingsList : data.data
         }))
         .catch(error => console.log(error))
-
     }
 
     OnClickThings(obj , e){
@@ -52,24 +56,27 @@ class ThingsIDo extends Component {
         }
         e.target.classList.add('active');
 
+        this.getTermRelatedThings(obj.id);
+
     }
 
     render() {
 
-        const firstTermID = (this.state.thingsTax[0] !== undefined ) ? this.state.thingsTax[0].slug : '' ;
+        const firstTermSlug = (this.state.thingsTax[0] !== undefined ) ? this.state.thingsTax[0].slug : '' ;
 
         return (
             <section className="sectionWrap d-flex justify-content-between flex-wrap" id="thingsSecWrap">
                 <h3 className="mainTitle">Things i do</h3>
-                <Tab.Container id="thingsTabWrap" defaultActiveKey={firstTermID}>
+                <Tab.Container id="thingsTabWrap" defaultActiveKey={firstTermSlug}>
                     <ThingsTaxContent 
                         taxonomyList={this.state.thingsTax}
                         OnClickThings={this.OnClickThings}
                         termSingleImg={this.state.termImage}
                     />
                     <ThingsContent 
-                        thingsList={this.state.thingsList}
+                        activeTermID={this.state.termID}
                         taxonomyList={this.state.thingsTax}
+                        thingsList={this.state.thingsList}
                     />
                 </Tab.Container>
                 <div className="bottomBar"></div>

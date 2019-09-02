@@ -3,7 +3,7 @@ import API from '../lib/api';
 
 //Components
 import SeoHead from '../components/seo-head';
-import MainVideo from '../components/homepage/main-video';
+//import MainVideo from '../components/homepage/main-video';
 import MeetDaria from '../components/homepage/meet-daria';
 import SeekVideo from '../components/homepage/seeking-video';
 import ThingsIDo from '../components/homepage/things-i-do';
@@ -51,7 +51,7 @@ class HomeComponent extends Component {
   render() {
     return (
       <div className="maniContent">
-        <MainVideo videoUrl={this.state.homepage.video} videoPoster={this.state.homepage.video_poster} />
+        {/* <MainVideo videoUrl={this.state.homepage.video} videoPoster={this.state.homepage.video_poster} /> */}
         <SeoHead seo={this.state.seo}/>         
         <MeetDaria homeParams={this.state.homepage}/>
         <SeekVideo seekVideosUrls={this.state.seekVideos} seekVideoContent={this.state.seekContent}/>
