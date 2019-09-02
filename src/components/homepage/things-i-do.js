@@ -14,11 +14,14 @@ class ThingsIDo extends Component {
             thingsTax : {},
             termImage : '',
             termID : '',
-            thingsList : {}
+            thingsList : {},
+            isFancyboxOpen : false
         }
 
         this.OnClickThings = this.OnClickThings.bind(this);
         this.getTermRelatedThings = this.getTermRelatedThings.bind(this);
+        this.OnFancyboxOpen = this.OnFancyboxOpen.bind(this);
+        this.OnFancyboxClose = this.OnFancyboxClose.bind(this);
     }
 
     componentDidMount(){
@@ -60,13 +63,27 @@ class ThingsIDo extends Component {
 
     }
 
+    OnFancyboxOpen(){
+        this.setState({
+            isFancyboxOpen : true
+        });
+    }
+
+    OnFancyboxClose(){
+        this.setState({
+            isFancyboxOpen : false
+        });
+    }
+
     render() {
 
         const firstTermSlug = (this.state.thingsTax[0] !== undefined ) ? this.state.thingsTax[0].slug : '' ;
+        const topBarStyle = ( this.state.isFancyboxOpen ) ? 'translateX(100%)' : 'translateX(0)' ;
+        const bottomBarStyle = ( this.state.isFancyboxOpen ) ? 'translateX(-100%)' : 'translateX(0)' ;
 
         return (
             <section className="sectionWrap d-flex justify-content-between flex-wrap" id="thingsSecWrap">
-                <h3 className="mainTitle">Things i do</h3>
+                <h3 className="mainTitle" style={{ transform : topBarStyle }}>Things i do</h3>
                 <Tab.Container id="thingsTabWrap" defaultActiveKey={firstTermSlug}>
                     <ThingsTaxContent 
                         taxonomyList={this.state.thingsTax}
@@ -77,9 +94,11 @@ class ThingsIDo extends Component {
                         activeTermID={this.state.termID}
                         taxonomyList={this.state.thingsTax}
                         thingsList={this.state.thingsList}
+                        openFancybox={this.OnFancyboxOpen}
+                        closeFancybox={this.OnFancyboxClose}
                     />
                 </Tab.Container>
-                <div className="bottomBar"></div>
+                <div className="bottomBar" style={{ transform : bottomBarStyle }}></div>
             </section>
         )
     }

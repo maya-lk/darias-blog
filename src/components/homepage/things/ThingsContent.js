@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Tab from 'react-bootstrap/Tab';
 import API from '../../../lib/api';
+import { Scrollbars } from 'react-custom-scrollbars';
+import ReactFancyBox from 'react-fancybox'
+import 'react-fancybox/lib/fancybox.css'
 
 class ThingsContent extends Component {
 
@@ -9,21 +12,10 @@ class ThingsContent extends Component {
         this.state = {            
             thingList : {}
         }
-        
-        this.getTermRelatedThingsList = this.getTermRelatedThingsList.bind(this);
     }
 
     componentDidMount(){
-        API.get(`wp/v2/things-do?posts_per_page=-1`)
-        .then(data => this.setState({
-            thingList : data.data
-        }))
-        .catch(error => console.log(error))
-    }
-
-    getTermRelatedThingsList(termID){
-
-        API.get(`wp/v2/things-do?things_tax=${termID}`)
+        API.get(`daria/v2/things?per_page=-1`)
         .then(data => this.setState({
             thingList : data.data
         }))
@@ -31,7 +23,7 @@ class ThingsContent extends Component {
     }
 
     render() {
-        const { taxonomyList } = this.props;
+        const { taxonomyList , openFancybox , closeFancybox } = this.props;
 
         return (
             <div className="thingsDoContentWrap">
@@ -41,19 +33,37 @@ class ThingsContent extends Component {
                             return(
                                 <Tab.Pane eventKey={term.slug} key={term.id}>
                                     <div className="thingsItemWrap">
-                                        {
-                                            Object.values(this.state.thingList).map((thing) => {
-                                                var thingItem = '';
-                                                if( thing.things_tax.includes(term.id) ){
-                                                    thingItem = thing.slug;
-                                                }else{
-                                                    thingItem = '';
-                                                }
-                                                return(
-                                                    <div key={thing.id}>{thingItem}</div>
-                                                )
-                                            })
-                                        }
+                                        <Scrollbars
+                                            style={{ height: 768 }}
+                                        >
+                                            {
+                                                Object.values(this.state.thingList).map((thing) => {
+                                                    console.log(thing);
+                                                    var thingItem = '';
+                                                    if( thing.tax_term.includes(term.id) ){
+                                                        if( thing.type === 'Image' ){
+                                                            thingItem = <ReactFancyBox
+                                                                thumbnail={thing.image.url}
+                                                                image={thing.image.url}
+                                                                onOpen={openFancybox}
+                                                                onClose={closeFancybox}/>
+                                                        }else if( thing.type === 'Youtube' ){
+                                                            thingItem = '<span style="background-image : url(https://img.youtube.com/vi/'+thing.youtube_id+'/maxresdefault.jpg)" class="imgOverlay youtubeComp"><a href="#">Im a video, Play me</a></span>';
+                                                        }else if( thing.type === 'Custom' ){
+                                                            thingItem = thing.title;
+                                                        }else{
+                                                            thingItem = '';
+                                                        }                                                        
+                                                    }else{
+                                                        thingItem = '';
+                                                    }
+                                                    return(                                                    
+                                                        <div key={thing.ID} className="thingItem">{thingItem}</div>
+                                                    )
+                                                })
+                                                //<div key={thing.ID} className="thingItem" dangerouslySetInnerHTML={{__html: thingItem}}></div>
+                                            }
+                                        </Scrollbars>
                                     </div>
                                 </Tab.Pane>
                             )
