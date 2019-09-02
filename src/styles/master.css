@@ -520,14 +520,15 @@ body{
     padding-right: 3rem;
     padding-bottom: 3rem;
 }
-.thingsTaxWrap .nav-link {
+.thingsTaxWrap #termList .nav-link {
     color: #434242;
     font-weight: 800;
     font-size: 3rem;
     padding: 1rem 1rem;
+    background-color: transparent;
 }
-.thingsTaxWrap .nav-link:hover , 
-.thingsTaxWrap .nav-link.active{
+.thingsTaxWrap #termList .nav-link:hover , 
+.thingsTaxWrap #termList .nav-link.active{
     color: #ffffff;
 }
 .taxDescription {
@@ -551,4 +552,7 @@ body{
 .sc-bxivhb {
     position: absolute !important;
     opacity: 0.2;
+}
+#thingsContTabs {
+    color: #fff;
 }

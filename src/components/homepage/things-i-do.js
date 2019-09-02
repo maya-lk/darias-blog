@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from '../../lib/api';
+import Tab from 'react-bootstrap/Tab'
 
 //Child Components
 import ThingsTaxContent from './things/ThingsTaxContent';
@@ -54,18 +55,23 @@ class ThingsIDo extends Component {
     }
 
     render() {
+
+        const firstTermID = (this.state.thingsTax[0] !== undefined ) ? this.state.thingsTax[0].slug : '' ;
+
         return (
             <section className="sectionWrap d-flex justify-content-between flex-wrap" id="thingsSecWrap">
                 <h3 className="mainTitle">Things i do</h3>
-                <ThingsTaxContent 
-                    taxonomyList={this.state.thingsTax}
-                    OnClickThings={this.OnClickThings}
-                    termSingleImg={this.state.termImage}
-                />
-                <ThingsContent 
-                    thingsList={this.state.thingsList}
-                    taxonomyList={this.state.thingsTax}
-                />
+                <Tab.Container id="thingsTabWrap" defaultActiveKey={firstTermID}>
+                    <ThingsTaxContent 
+                        taxonomyList={this.state.thingsTax}
+                        OnClickThings={this.OnClickThings}
+                        termSingleImg={this.state.termImage}
+                    />
+                    <ThingsContent 
+                        thingsList={this.state.thingsList}
+                        taxonomyList={this.state.thingsTax}
+                    />
+                </Tab.Container>
                 <div className="bottomBar"></div>
             </section>
         )
