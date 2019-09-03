@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import MeetDariaBg from './animations/meet-daria-bg'
+import { isMobile } from "react-device-detect";
+
+import MeetDariaBg from './animations/meet-daria-bg';
 
 class MeetDaria extends Component {
 
@@ -8,18 +10,28 @@ class MeetDaria extends Component {
         this.state = {
         }
         
-      }
+    }
 
-    render() {
-        return (
-            <section className="sectionWrap d-flex justify-content-between flex-wrap" id="meetDariaWrap">
+    renderContent = () => {
+        if (isMobile) {
+            return <section className="sectionWrap d-flex justify-content-between flex-wrap" id="meetDariaWrap">
                 <div className="meetDariaCont">
                     <h2><span>Meet</span> Daria</h2>
                     <div dangerouslySetInnerHTML={{__html: this.props.homeParams.meet_daria_content}} />
-                </div>
-                <MeetDariaBg animbg={this.props.homeParams.meet_daria_image}/>                
+                </div>            
             </section>
-        )
+        }
+        return <section className="sectionWrap d-flex justify-content-between flex-wrap" id="meetDariaWrap">
+            <div className="meetDariaCont">
+                <h2><span>Meet</span> Daria</h2>
+                <div dangerouslySetInnerHTML={{__html: this.props.homeParams.meet_daria_content}} />
+            </div>
+            <MeetDariaBg animbg={this.props.homeParams.meet_daria_image}/>                
+        </section>
+    }
+
+    render() {
+        return this.renderContent();
     }
 
 }

@@ -639,3 +639,225 @@ body{
     font-size: 0.9rem;
     margin-right: 0.5rem;
 }
+.seekVideoWrap {
+    position: relative;
+    width: 55%;
+}
+.videoSeekerWrap {
+    position: absolute;
+    z-index: 10;
+    bottom: 12rem;
+    left: 88%;
+    width: 464px;
+}
+#seekingVideoWrap {
+    padding: 4rem 0 6rem;
+}
+.seekVideoCont {
+    width: 45%;
+    padding-left: 4rem;
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #000000;
+}
+.seekVideoCont .even {
+    -moz-text-fill-color: white;
+    -moz-text-stroke-width: 1px;
+    -moz-text-stroke-color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+
+
+
+
+
+
+
+/******************************* Responsive Styles **************************/
+@media screen and ( max-width: 767px ){
+
+    #flyoutMenu .menuContWrap > div {
+        width: 100%;
+    }
+    .menuItemsWrap {
+        width: 100%;
+        height: 100%;
+    }
+    #mainMenu {
+        justify-content: center;
+        align-items: center;
+    }
+    #mainMenu .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+    #mainMenu .nav-link:hover{
+        color: #ffffff;
+    }
+    .meetDariaCont {
+        width: 100%;
+        padding: 0 2rem;
+    }
+    #meetDariaWrap {
+        padding: 2rem 0;
+    }
+    .footer {
+        padding: 2rem;
+    }
+    .footerLogoWrap.d-flex {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .footerLogoWrap .logo {
+        width: 100%;
+        margin-bottom: 1rem;
+        align-items: center;
+    }
+    .bottomFooterLink {
+        flex-wrap: wrap;
+        padding: 0;
+    }
+    .footerNav.nav .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+    .footerNav.nav .nav-link {
+        padding: .5rem 1rem;
+    }
+    .socialLinks.nav {
+        margin: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .cpyrights {
+        width: 100%;
+        text-align: center;
+        margin: 1rem 0;
+    }
+    .creator {
+        width: 100%;
+        text-align: center;
+    }
+    #instaFeedWrap {
+        padding: 3rem 2rem;
+    }
+    .instaContent {
+        width: 100%;
+        padding: 0;
+    }
+    .instaFeed {
+        width: 100%;
+        margin-top: 2rem;
+    }
+    .instaContent h2 {
+        font-size: 3rem;
+    }
+    .instaContent h3 {
+        font-size: 2rem;
+    }
+    .instaImg {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .instaImg:nth-child(2) {
+        margin-top: 0;
+    }
+    #blogSecWrap {
+        padding: 3rem 2rem;
+    }
+    .blogSecCont {
+        width: 100%;
+        padding-top: 0;
+    }
+    .blogSecCont .odd.nav-item {
+        padding: 0;
+    }
+    .blogSecCont .odd.nav-item .svg-inline--fa {
+        display: none;
+    }
+    .blogSecCont .odd.nav-item span {
+        padding: 0;
+    }
+    .blogSecCont .nav {
+        justify-content: space-between;
+    }
+    .blogSecCont h2 {
+        font-size: 6rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .blogSecCont p {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+    .blogPostWrap {
+        width: 100%;
+    }
+    .postsWrapper {
+        display: flex;
+        flex-wrap: wrap;
+        transform: unset;
+    }
+    .postsWrapper .blogPost {
+        margin-bottom: 1rem;
+    }
+    .seekVideoWrap {
+        width: 100%;
+    }
+    #seekingVideoWrap {
+        padding: 3rem 0;
+        overflow: hidden;
+    }
+    .seekVideoCont {
+        width: 100%;
+        padding: 0 2rem;
+        font-size: 4rem;
+    }
+    .videoSeekerWrap {
+        position: static;
+        width: 100%;
+        min-height: 130px;
+    }
+    #thingsSecWrap .mainTitle {
+        position: static;
+        width: 100%;
+        text-align: center;
+    }
+    #thingsSecWrap .bottomBar {
+        display: none;
+    }
+    .thingsTaxContentWrap {
+        width: 100%;
+    }
+    .thingsDoContentWrap {
+        width: 100%;
+        padding: 3rem 0;
+    }
+    .thingsTaxWrap {
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+    .thingsTaxWrap #termList .nav-link {
+        font-size: 2.5rem;
+        padding: 0.5rem 1rem;
+    }
+    .thingsTaxConWrap {
+        width: 100%;
+        padding: 0 2rem;
+    }
+    .taxTitle {
+        font-size: 3.1rem;
+        margin: 2rem 0;
+    }
+    .thingsItemWrap {
+        padding: 0 2rem;
+    }
+    #mainVideoWrap .imgOverlay {
+        background-size: contain;
+    }
+
+}

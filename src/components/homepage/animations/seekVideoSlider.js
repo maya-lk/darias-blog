@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Slider, Rail, Handles, Tracks } from 'react-compound-slider';
 import { Handle, Track } from './seekvideocomponents'; // example render components
+import { isMobile } from "react-device-detect";
 
 const sliderStyle = {
     position: 'relative',
@@ -10,7 +11,7 @@ const sliderStyle = {
 
 const railStyle = {
     position: 'absolute',
-    width: '524px',
+    width: `${ (isMobile )? '100%' : '524px' }`,
     height: '100px',
     borderRadius: '60px',
     cursor: 'pointer',
@@ -19,7 +20,7 @@ const railStyle = {
     color: '#000',
     textTransform: 'uppercase',
     fontWeight: '600',
-    fontSize: '1.6rem',
+    fontSize: `${ (isMobile )? '1.3rem' : '1.6rem' }`,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'

@@ -3,6 +3,7 @@ import * as ReactBootstrap from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 import API from '../lib/api';
+import { isMobile } from "react-device-detect";
  
 class Menu extends Component {
 
@@ -62,7 +63,8 @@ class Menu extends Component {
         .catch(error => console.log(error))
     }
 
-    render() {
+    renderContent = () => {
+
         var body = document.body;
         if (this.props.menuVisibility) {
             this.visibility = "show";
@@ -71,9 +73,10 @@ class Menu extends Component {
             this.visibility = "hide";
             body.classList.remove("menuOpen");
         }
-    
-        return (
-            <div id="flyoutMenu" className={this.visibility}>
+
+
+        if (isMobile) {
+            return <div id="flyoutMenu" className={this.visibility}>
                 <div className="topBarWrap d-flex justify-content-end">
                     <ReactBootstrap.Button className="menuToggler closeMenu" onMouseDown={this.props.handleMouseDown}>
                         <span className="closeBtn"></span>
@@ -81,16 +84,6 @@ class Menu extends Component {
                     </ReactBootstrap.Button>
                 </div>
                 <div className="menuContWrap d-flex justify-content-between">
-                    <div className="menuContent">
-                        <div className="menuLogo" style={{ backgroundImage : 'url('+this.state.menuLogo+')' }}></div>
-                        <div className="menuContWrapper">
-                            <div className="menuCont" dangerouslySetInnerHTML={{__html: this.state.menuContent}} />
-                            <div className="socialMedia">
-                                <a href={this.state.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-                                <a href={this.state.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-                            </div>
-                        </div>
-                    </div>
                     <div className="menuItemsWrap">
                         <span className="menuBg" id="menuBg" style={{ 
                             //opacity: `${this.state.hovered ? '1' : '0'}`,
@@ -118,7 +111,57 @@ class Menu extends Component {
                     </div>
                 </div>
             </div>
-        );
+        }
+        return <div id="flyoutMenu" className={this.visibility}>
+            <div className="topBarWrap d-flex justify-content-end">
+                <ReactBootstrap.Button className="menuToggler closeMenu" onMouseDown={this.props.handleMouseDown}>
+                    <span className="closeBtn"></span>
+                    Menu
+                </ReactBootstrap.Button>
+            </div>
+            <div className="menuContWrap d-flex justify-content-between">
+                <div className="menuContent">
+                    <div className="menuLogo" style={{ backgroundImage : 'url('+this.state.menuLogo+')' }}></div>
+                    <div className="menuContWrapper">
+                        <div className="menuCont" dangerouslySetInnerHTML={{__html: this.state.menuContent}} />
+                        <div className="socialMedia">
+                            <a href={this.state.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+                            <a href={this.state.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="menuItemsWrap">
+                    <span className="menuBg" id="menuBg" style={{ 
+                        //opacity: `${this.state.hovered ? '1' : '0'}`,
+                        backgroundImage: 'url(' + this.state.defaultMenuImage + ')', 
+                    }}></span>
+                    <Nav defaultActiveKey={`${process.env.PUBLIC_URL}`} className="flex-column" id="mainMenu">                            
+                        {
+                            Object.values(this.state.mainMenuItems).map(function(menuItem , index) {
+                                var menuName = menuItem.title;
+                                var menuslug = `${process.env.PUBLIC_URL}`;
+                                if (menuName === 'Home') {
+                                    menuslug = `${process.env.PUBLIC_URL}`;
+                                } else {
+                                    menuslug = `${process.env.PUBLIC_URL}/`+menuName.toLowerCase().replace(/ /g, "-");
+                                }
+                                return(
+                                    // <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onMouseOver={this.hoverOn()}>{menuName}</Nav.Link>
+                                    <Nav.Link key={index} as={Link} to={menuslug} href={menuslug} data-hover={menuItem.hover_image} onClick={this.menuclickFunc} onMouseOver={this.hoverOn} onMouseOut={this.hoverOff}>
+                                        {menuName}
+                                    </Nav.Link>
+                                )
+                            }.bind(this))
+                        }
+                    </Nav>
+                </div>
+            </div>
+        </div>
+    }
+
+    render() {        
+    
+        return this.renderContent();
     }
 }
  
