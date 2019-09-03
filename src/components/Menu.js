@@ -11,7 +11,11 @@ class Menu extends Component {
         this.state = {
             mainMenuItems:'',
             hovered: false,
-            defaultMenuImage : ''
+            defaultMenuImage : '',
+            menuContent : '',
+            menuLogo : '',
+            facebook : '#',
+            instagram : '#'
         }
 
         this.hoverOn = this.hoverOn.bind(this);
@@ -49,7 +53,11 @@ class Menu extends Component {
 
         API.get('daria/v2/settings')
         .then(data => this.setState({
-            defaultMenuImage : data.data.default_menu_image
+            defaultMenuImage : data.data.default_menu_image,
+            menuContent: data.data.menu_content,
+            menuLogo: data.data.menu_logo.url,
+            facebook : data.data.facebook,
+            instagram : data.data.instagram
         }))
         .catch(error => console.log(error))
     }
@@ -74,7 +82,14 @@ class Menu extends Component {
                 </div>
                 <div className="menuContWrap d-flex justify-content-between">
                     <div className="menuContent">
-
+                        <div className="menuLogo" style={{ backgroundImage : 'url('+this.state.menuLogo+')' }}></div>
+                        <div className="menuContWrapper">
+                            <div className="menuCont" dangerouslySetInnerHTML={{__html: this.state.menuContent}} />
+                            <div className="socialMedia">
+                                <a href={this.state.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+                                <a href={this.state.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+                            </div>
+                        </div>
                     </div>
                     <div className="menuItemsWrap">
                         <span className="menuBg" id="menuBg" style={{ 
