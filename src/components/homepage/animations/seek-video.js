@@ -12,7 +12,8 @@ class SeekVideoElement extends Component {
             domain: null,
             values: null,
             isPlaying: false,
-            isSeeking: false
+            isSeeking: false,
+            isFlipped: false
         }
     }
 
@@ -81,7 +82,9 @@ class SeekVideoElement extends Component {
             }else{
                 this.video.current.src = this.props.seekVideoFull;
                 this.video.current.play();
-                console.log(this.video.current.src);
+                this.setState({
+                    isFlipped: true
+                });
             }
         });
     };
@@ -106,11 +109,11 @@ class SeekVideoElement extends Component {
 
 
     render() {
-        const { domain, values } = this.state;
+        const { domain, values , isFlipped } = this.state;
         return (
             <div className="seekVideoWrap">
                 <video
-                    style={{ width: '100%' }}
+                    style={{ width: '100%' , minHeight : '589px' , backgroundColor : '#000' }}
                     src={this.props.seekVideoSmall}
                     ref={this.video}
                 />
@@ -124,6 +127,7 @@ class SeekVideoElement extends Component {
                                 onUpdate={this.onUpdate}
                                 onSlideStart={this.onSlideStart}
                                 onSlideEnd={this.onSlideEnd}
+                                isFlipped={isFlipped}
                             />
                         </div>
                     </React.Fragment>

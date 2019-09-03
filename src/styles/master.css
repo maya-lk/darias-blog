@@ -669,7 +669,19 @@ body{
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
-
+.contactBtn.btn.btn-dark {
+    width: 100%;
+    position: absolute;
+    z-index: 7;
+    left: 12%;
+    min-height: 100px;
+    border-radius: 67px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 3rem;
+}
 
 
 

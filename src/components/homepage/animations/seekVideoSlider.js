@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Slider, Rail, Handles, Tracks } from 'react-compound-slider';
 import { Handle, Track } from './seekvideocomponents'; // example render components
 import { isMobile } from "react-device-detect";
+import Button from 'react-bootstrap/Button';
+import ReactCardFlip from 'react-card-flip';
 
 const sliderStyle = {
     position: 'relative',
@@ -28,63 +30,68 @@ const railStyle = {
 
 class VideoSlider extends Component {
     render() {
-        const { domain, values, onChange, onUpdate, onSlideStart , onSlideEnd } = this.props;
+        const { domain, values, onChange, onUpdate, onSlideStart , onSlideEnd , isFlipped } = this.props;
 
         return (
-            <Slider
-                mode={1}
-                step={1}
-                domain={domain}
-                rootStyle={sliderStyle}
-                onUpdate={onUpdate}
-                onChange={onChange}
-                onSlideStart={onSlideStart}
-                onSlideEnd={onSlideEnd}
-                values={values}
-            >
-                <Rail>
-                    {({ getRailProps }) => <div style={railStyle} {...getRailProps()} ><span
-                        style={{
-                            marginLeft: '100px'    
-                        }}
-                    >Slide to go crazy</span></div>}
-                </Rail>
-                <Handles>
-                    {({ handles, getHandleProps }) => (
-                        <div>
-                            {handles.map(handle => (
-                                <Handle
-                                key={handle.id}
-                                handle={handle}
-                                domain={domain}
-                                getHandleProps={getHandleProps}
-                                />
-                            ))}
-                        </div>
-                    )}
-                </Handles>
-                <Tracks right={false}>
-                    {({ tracks, getTrackProps }) => (
-                        <div
+            <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+                <Slider
+                    key="front"
+                    className="seekBtnWrap"
+                    mode={1}
+                    step={1}
+                    domain={domain}
+                    rootStyle={sliderStyle}
+                    onUpdate={onUpdate}
+                    onChange={onChange}
+                    onSlideStart={onSlideStart}
+                    onSlideEnd={onSlideEnd}
+                    values={values}
+                >
+                    <Rail>
+                        {({ getRailProps }) => <div style={railStyle} {...getRailProps()} ><span
                             style={{
-                                position: 'relative',
-                                width: '524px',
+                                marginLeft: '100px'    
                             }}
-                        >
-                            {                
-                                tracks.map(({ id, source, target }) => (
-                                    <Track
-                                        key={id}
-                                        source={source}
-                                        target={target}
-                                        getTrackProps={getTrackProps}
+                        >Slide to go crazy</span></div>}
+                    </Rail>
+                    <Handles>
+                        {({ handles, getHandleProps }) => (
+                            <div>
+                                {handles.map(handle => (
+                                    <Handle
+                                    key={handle.id}
+                                    handle={handle}
+                                    domain={domain}
+                                    getHandleProps={getHandleProps}
                                     />
-                                ))
-                            }
-                        </div>
-                    )}
-                </Tracks>
-            </Slider>
+                                ))}
+                            </div>
+                        )}
+                    </Handles>
+                    <Tracks right={false}>
+                        {({ tracks, getTrackProps }) => (
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    width: '524px',
+                                }}
+                            >
+                                {                
+                                    tracks.map(({ id, source, target }) => (
+                                        <Track
+                                            key={id}
+                                            source={source}
+                                            target={target}
+                                            getTrackProps={getTrackProps}
+                                        />
+                                    ))
+                                }
+                            </div>
+                        )}
+                    </Tracks>
+                </Slider>
+                <Button key="back" variant="dark" className="contactBtn" href={`${process.env.PUBLIC_URL}/contact`}>Contact Us</Button>
+            </ReactCardFlip>
         );
     }
 }
