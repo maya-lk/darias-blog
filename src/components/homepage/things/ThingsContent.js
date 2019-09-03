@@ -4,8 +4,8 @@ import API from '../../../lib/api';
 import { Scrollbars } from 'react-custom-scrollbars';
 import ReactFancyBox from 'react-fancybox';
 import 'react-fancybox/lib/fancybox.css';
-import 'react-modal-video/scss/modal-video.scss';
-import ModalVideo from 'react-modal-video';
+
+import ThingModalVideo from './ThingModalVideo';
 
 
 class ThingsContent extends Component {
@@ -27,7 +27,7 @@ class ThingsContent extends Component {
 
     render() {
         //const { taxonomyList , openFancybox , closeFancybox , openModal , closeModal , show } = this.props;
-        const { taxonomyList , openFancybox , closeFancybox , show  } = this.props;
+        const { taxonomyList , openFancybox , closeFancybox  } = this.props;
 
         return (
             <div className="thingsDoContentWrap">
@@ -53,20 +53,14 @@ class ThingsContent extends Component {
                                                                         onClose={closeFancybox}/>
                                                                 </div>
                                                             )
-                                                        else if( thing.type === 'Youtube' ) 
+                                                        else if( thing.type === 'Youtube' )                                                             
                                                             return (
                                                                 <div key={thing.ID} className="thingItem youtubeItem">
-                                                                    <ModalVideo
-                                                                        id={thing.ID} 
-                                                                        channel='youtube' 
-                                                                        isOpen={show} 
-                                                                        videoId={thing.youtube_id} 
-                                                                        onClose={closeFancybox} 
+                                                                    <ThingModalVideo 
+                                                                        youtubeID={thing.youtube_id}
+                                                                        onOpen={openFancybox}
+                                                                        onClose={closeFancybox}
                                                                     />
-                                                                    <button
-                                                                        className="openVideoBtn" 
-                                                                        onClick={openFancybox} 
-                                                                        style={{ backgroundImage : 'url(https://img.youtube.com/vi/'+thing.youtube_id+'/sddefault.jpg)' }}>Im video, Play me</button>
                                                                 </div>
                                                             )
                                                         else

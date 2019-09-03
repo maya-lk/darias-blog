@@ -635,3 +635,7 @@ body{
 .thingItem .react-fancybox .box {
     z-index: 1000000000;
 }
+.thingItem.youtubeItem button.openVideoBtn .svg-inline--fa {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}

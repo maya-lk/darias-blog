@@ -15,15 +15,12 @@ class ThingsIDo extends Component {
             termImage : '',
             termID : '',
             thingsList : {},
-            isFancyboxOpen : false,
-            show: false
+            isFancyboxOpen : false
         }
 
         this.OnClickThings = this.OnClickThings.bind(this);
         this.OnFancyboxOpen = this.OnFancyboxOpen.bind(this);
         this.OnFancyboxClose = this.OnFancyboxClose.bind(this);
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount(){
@@ -66,14 +63,6 @@ class ThingsIDo extends Component {
         });
     }
 
-    openModal () {
-        this.setState({show: true})
-    }
-
-    closeModal () {
-        this.setState({show: false})
-    }
-
     render() {
 
         const firstTermSlug = (this.state.thingsTax[0] !== undefined ) ? this.state.thingsTax[0].slug : '' ;
@@ -95,9 +84,6 @@ class ThingsIDo extends Component {
                         thingsList={this.state.thingsList}
                         openFancybox={this.OnFancyboxOpen}
                         closeFancybox={this.OnFancyboxClose}
-                        openModal={this.openModal}
-                        closeModal={this.closeModal}
-                        show={this.state.isFancyboxOpen}
                     />
                 </Tab.Container>
                 <div className="bottomBar" style={{ transform : bottomBarStyle }}></div>
