@@ -1,3 +1,10 @@
+RewriteEngine On
+RewriteBase /darias/blog/
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /darias/blog/index.html [L]
+
 # BEGIN WP Performance Score Booster Settings
 
 ## BEGIN Enable GZIP Compression ##
